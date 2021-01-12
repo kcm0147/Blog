@@ -1,5 +1,5 @@
 module.exports = {
-  title: `Hello`,
+  title: `Mook's Blog`,
   description: `Blog By Mook`,
   author: `Chang Mook Kim`,
   introduction: `취업을 준비하는 대학생`,
@@ -10,6 +10,7 @@ module.exports = {
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
     linkedin: ``, // Your LinkedIn account
+    instagram:`mo_ookk`,
   },
   icon: `content/assets/felog.png`, // Add your favicon
   keywords: [`blog`],

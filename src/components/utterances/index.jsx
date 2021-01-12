@@ -12,13 +12,13 @@ export const Utterances = ({ repo }) => {
   const rootElm = React.createRef()
 
   useEffect(() => {
-    const isDarkTheme = Dom.hasClassOfBody(THEME.DARK)
+    const isLightTheme = Dom.hasClassOfBody(THEME.LIGHT)
     const utterances = document.createElement('script')
     const utterancesConfig = {
       src,
       repo,
       branch,
-      theme: isDarkTheme ? DARK_THEME : LIGHT_THEME,
+      theme: isLightTheme ? LIGHT_THEME : DARK_THEME,
       label: 'comment',
       async: true,
       'issue-term': 'pathname',
