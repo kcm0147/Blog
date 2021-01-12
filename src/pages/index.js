@@ -15,7 +15,7 @@ import * as Dom from '../utils/dom'
 import * as EventManager from '../utils/event-manager'
 
 const BASE_LINE = 80
-
+// 제일 처음 블로그에 접속했을때의 페이지 내용
 function getDistance(currentPos) {
   return Dom.getDocumentHeight() - currentPos
 }
@@ -88,6 +88,7 @@ export const pageQuery = graphql`
             title
             category
             draft
+            description
           }
         }
       }

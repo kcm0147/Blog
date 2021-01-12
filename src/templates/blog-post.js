@@ -18,6 +18,8 @@ import * as ScrollManager from '../utils/scroll'
 import '../styles/code.scss'
 import 'katex/dist/katex.min.css'
 
+// 블로그 Layout을 꾸미는 곳 Markdown -> Blog
+
 export default ({ data, pageContext, location }) => {
   useEffect(() => {
     ScrollManager.init()
@@ -36,21 +38,21 @@ export default ({ data, pageContext, location }) => {
       <PostTitle title={postTitle} />
       <PostDate date={date} />
       <PostContainer html={post.html} />
-      <SocialShare title={postTitle} author={author} />
+      {/* <SocialShare title={postTitle} author={author} />
       {!!sponsor.buyMeACoffeeId && (
         <SponsorButton sponsorId={sponsor.buyMeACoffeeId} />
-      )}
+      )} */}
       <Elements.Hr />
       <Bio />
       <PostNavigator pageContext={pageContext} />
-      {!!disqusShortName && (
+      {/* {!!disqusShortName && (
         <Disqus
           post={post}
           shortName={disqusShortName}
           siteUrl={siteUrl}
           slug={pageContext.slug}
         />
-      )}
+      )} */}
       {!!utterances && <Utterances repo={utterances} />}
     </Layout>
   )

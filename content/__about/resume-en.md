@@ -1,13 +1,7 @@
 ---
-title: 'about'
-date: 2019-1-27 16:21:13
+title: 'About'
+date: 2021-1-1 16:04:32
 lang: 'en'
 ---
 
-# Your name
-
-<div align="center">
-
-_Thank you for reading my resume. If you want to contact me, Please send me an email._
-
-</div>
+# About me

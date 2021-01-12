@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-bee",
+  "name": "gatsby-Mook-Blog",
   "private": true,
-  "description": "Gatsby blog starter template",
+  "description": "Gatsby blog",
   "version": "0.1.0",
-  "author": "Jbee[JaeYeopHan]<ljyhanll@gmail.com>",
+  "author": "Mook[ChangMook]<asde130@naver.com>",
   "bugs": {
-    "url": "https://github.com/JaeYeopHan/gatsby-starter-bee/issues"
+    "url": "https://github.com/kcm0147/Blog/issues"
   },
   "dependencies": {
     "gatsby": "^2.2.8",
@@ -74,7 +74,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JaeYeopHan/gatsby-starter-bee.git"
+    "url": "git+https://github.com/kcm0147/Blog.git"
   },
   "scripts": {
     "post": "gatsby-post-gen",
