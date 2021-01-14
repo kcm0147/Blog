@@ -1,1 +1,1 @@
-BLog url : chmook.netlify.com
+[Blog url](https://chmook.netlify.com)
