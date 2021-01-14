@@ -1,0 +1,131 @@
+---
+title : '[BOJ] 1339 단어수학'
+date : 2021-01-15 01:32:04
+category : 'Algorithms'
+draft : false
+description : "1339 단어수학"
+---
+
+
+* 그리디
+* 순열
+
+<br/>
+
+![문제사진](https://user-images.githubusercontent.com/57346393/104619977-ce0c5380-56d1-11eb-986e-c731286abf7b.png)
+
+<br/>
+
+[요구조건]
+
+N개의 단어가 주어지며 각 단어가 구성되는 알파벳에 각각 다른 숫자를 부여한다.
+
+그리고 단어를 숫자로 변환하고, 단어들의 합을 최대로 만들 때 그때의 합을 출력하는 것
+
+<br/>
+---
+
+문제를 보았을 때 그냥 완전탐색으로 문제를 해결해도 시간안에 해결할 수 있을 것 같았다. 
+
+어차피 문제에서 요구하는 것은 최댓값을 구하는 것이기 때문에 알파벳 처음부터 0~9 까지 다 넣을 필요가 없을 것 같아 9~9-(N+1)까지 의 숫자를 각 알파벳에 넣어서 단어들끼리 합을 구하면 좀 더 시간을 효율적으로 사용할 수 있다.
+
+ 
+`init()-alpahIndex의 HashMap을 사용해서 각 알파벳마다 Index를 선언해주었다.`
+
+`dfs() - 숫자 조합을 만드는 함수`
+
+`calc() - 문자-숫자가 맵핑되어 있을때 계산을 하는 함수`
+
+
+
+<br/>
+
+## 느낀점
+나는 Stirng을 직접 핸들링을 하였기 때문에 시간이 오래걸렸는데, String을 int[]배열에 옮겨놓고 핸들링하면 시간이 적게 걸렸다. 
+
+String을 직접 핸들링 하는것은 시간적으로 비효율적인 것 같다.
+
+<br/>
+
+
+
+```java
+
+class Main {
+
+
+    static Map<Character,Integer> alphaIndex;
+    static int[] cost;
+    static String[] word;
+    static boolean[] visit;
+    static int wordCnt,answer,alphaCnt;
+
+    public static void main(String[] argv) throws IOException {
+
+        init();
+        dfs(10-alphaCnt,1);
+        System.out.println(answer);
+
+    }
+
+    public static void init() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        wordCnt=Integer.parseInt(br.readLine());
+        alphaIndex = new HashMap<>();
+        word = new String[wordCnt];
+        alphaCnt=0;
+        for(int i=0;i<wordCnt;i++){
+            String curString = br.readLine();
+            word[i]=curString;
+            for(int j=0;j<curString.length();j++){
+                if(!alphaIndex.containsKey(curString.charAt(j))){
+                    alphaIndex.put(curString.charAt(j),++alphaCnt);
+                }
+            }
+
+        }
+        cost = new int[alphaCnt+1];
+        visit = new boolean[10];
+
+    }
+
+    public static void dfs(int startNum,int depth){
+        if(depth==alphaCnt+1){
+            int returnValue=calc();
+            answer=Math.max(returnValue,answer);
+            return;
+        }
+        for(int curNum=startNum;curNum<=9;curNum++){
+            if(!visit[curNum]){
+                visit[curNum]=true;
+                cost[depth]=curNum;
+                dfs(startNum,depth+1);
+                visit[curNum]=false;
+            }
+        }
+    }
+
+
+    public static int calc(){
+
+        int sum=0;
+
+        for(int i=0;i<wordCnt;i++){
+            String curString = word[i];
+            int base=1;
+            for(int j=curString.length()-1;j>=0;j--){
+                int curIndex = alphaIndex.get(curString.charAt(j));
+                sum+=(cost[curIndex]*base);
+                base*=10;
+            }
+        }
+
+        return sum;
+    }
+
+
+}
+
+```
+
+
