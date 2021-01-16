@@ -7,9 +7,10 @@ import './index.scss'
 export const ThumbnailItem = ({ node }) => (
   <Link className={`thumbnail ${TARGET_CLASS}`} to={node.fields.slug}>
     <div key={node.fields.slug}>
-      <h3>{node.frontmatter.title || node.fields.slug}</h3>
+      <h3 className='thumbnailHead'>{node.frontmatter.title || node.fields.slug}</h3>
       <p dangerouslySetInnerHTML={{ __html: node.frontmatter.description }} /> 
-    </div>
+      <p className='thumbnailDate' dangerouslySetInnerHTML={{ __html: node.frontmatter.date }} /> 
+ </div>
   </Link>
 )
 

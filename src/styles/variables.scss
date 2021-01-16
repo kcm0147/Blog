@@ -35,6 +35,10 @@ $light-category-text-color: #666;
 $light-category-highlight-text-color: #636c6e;
 $light-category-item-color: #fff;
 
+// post
+$light-postDate-text-color: rgb(241, 103, 48);
+
+
 /**
  * @dark theme
  */
@@ -56,3 +60,6 @@ $dark-category-text-color: #d8d7d7;
 
 $dark-category-highlight-border-color: #666;
 $dark-category-highlight-text-color: #fff;
+
+
+$dark-postDate-text-color: rgb(236, 223, 106);

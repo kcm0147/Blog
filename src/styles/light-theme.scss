@@ -53,6 +53,10 @@ body.light {
     &:hover {
       text-shadow: $light-hover-text-shadow;
     }
+
+    .thumbnailDate{
+      color: $light-postDate-text-color;
+    }
   }
 
   .footer {

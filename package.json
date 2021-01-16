@@ -51,7 +51,8 @@
     "typeface-montserrat": "0.0.54",
     "typeface-noto-sans-kr": "0.0.63",
     "typography": "^0.16.17",
-    "typography-theme-github": "^0.16.18"
+    "typography-theme-github": "^0.16.18",
+    "gatsby-plugin-google-fonts": "1.0.1"
   },
   "devDependencies": {
     "date-fns": "^1.30.1",
