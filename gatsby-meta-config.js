@@ -19,7 +19,7 @@ module.exports = {
     utterances: 'kcm0147/blog', // Your repository for archive comment
   },
   configs: {
-    countOfInitialPost: 10, // Config your initial count of post
+    countOfInitialPost: 7, // Config your initial count of post
   },
   sponsor: {
     buyMeACoffeeId: '',
