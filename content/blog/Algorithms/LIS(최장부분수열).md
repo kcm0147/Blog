@@ -4,6 +4,7 @@ date : 2021-01-14 21:12:04
 category : 'Algorithms'
 draft : false
 description : "LIS(최장부분수열)에 관하여"
+tags : ['Greedy','구현']
 ---
 
 ## 연관 문제 : 백준 12015 가장 긴 부분수열 길이 구하기

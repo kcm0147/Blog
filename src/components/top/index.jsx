@@ -13,6 +13,12 @@ export const Top = ({ title, location, rootPath }) => {
           {title}
         </Link>
       )}
+      {
+        <Link to={`/tags`} className="tag">
+          Tag
+        </Link>
+      }
+        
     </div>
   )
 }

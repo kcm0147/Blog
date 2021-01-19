@@ -16,4 +16,17 @@
     font-family: 'Catamaran';
     font-weight: 800;
   }
+
+  .tag{
+    display: inline-block;
+    float:right;
+    font-size: 28px;
+    padding-top: 8px;
+    color: $top-header-text-color;
+    opacity: 0.7;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Catamaran';
+    font-weight: 800;
+  }
 }

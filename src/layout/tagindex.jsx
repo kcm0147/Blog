@@ -6,13 +6,13 @@ import { ThemeSwitch } from '../components/theme-switch'
 import { Footer } from '../components/footer'
 import { rhythm } from '../utils/typography'
 
-import './index.scss'
+import './tagindex.scss'
 
 export const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
+  const Path = `${__PATH_PREFIX__}/tag`
   return (
     <React.Fragment>
-      <Top title={title} location={location} rootPath={rootPath} />
+      <Top title={title} location={location} rootPath={Path} />
       <div
         style={{
           marginLeft: `auto`,
@@ -22,7 +22,7 @@ export const Layout = ({ location, title, children }) => {
         }}
       >
         <ThemeSwitch />
-        <Header title={title} location={location} rootPath={rootPath} />
+        <Header title={title} location={location} rootPath={Path} />
         {children}
         <Footer />
       </div>
