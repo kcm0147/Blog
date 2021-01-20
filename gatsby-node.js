@@ -1,4 +1,6 @@
 const path = require(`path`)
+const _ = require("lodash")
+
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -12,7 +14,7 @@ exports.createPages = ({ graphql, actions }) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
+          limit: 2000
         ) {
           edges {
             node {
