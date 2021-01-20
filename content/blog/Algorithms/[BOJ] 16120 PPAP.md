@@ -4,7 +4,7 @@ date : 2021-01-15 18:59:04
 category : 'Algorithms'
 draft : false
 description : "16120 PPAP 문제풀이"
-tags : ['Greedy','구현']
+tags : ['Stack']
 ---
 
 * 스택

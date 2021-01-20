@@ -1,14 +1,7 @@
 import { Link,graphql } from 'gatsby'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
-import { Bio } from '../components/bio'
-import { Category } from '../components/category'
-import { Contents } from '../components/contents'
-import { Head } from '../components/head'
-import { HOME_TITLE } from '../constants'
-import { useCategory } from '../hooks/useCategory'
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import { useRenderedCount } from '../hooks/useRenderedCount'
+import { Top } from '../components/top'
 import { useScrollEvent } from '../hooks/useScrollEvent'
 import { Layout } from '../layout'
 import * as Dom from '../utils/dom'
@@ -20,20 +13,22 @@ function getDistance(currentPos) {
   return Dom.getDocumentHeight() - currentPos
 }
 
-const Tags = ({ pageContext, data }) => {
+const Tags = ({ pageContext, data, location }) => {
   const { siteMetadata } = data.site
   const { countOfInitialPost } = siteMetadata.configs
   const {edges,totalCount} = data.allMarkdownRemark
+  
 
   const { tag } = pageContext;
-  const tagHeader = `${totalCount} post${
+  const tagHeader = `${tag.totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
   
   const posts = data.allMarkdownRemark.edges
+  const rootPath = `/`
 
 
-  useIntersectionObserver()
+
   useScrollEvent(() => {
     const currentPos = window.scrollY + window.innerHeight
     const isTriggerPos = () => getDistance(currentPos) < BASE_LINE
@@ -48,6 +43,7 @@ const Tags = ({ pageContext, data }) => {
 
   return (
     <div>
+    <Top title={siteMetadata.title} location={location} rootPath={rootPath} />
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
@@ -81,6 +77,10 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
+     group(field: frontmatter___tags) {
+            fieldValue
+            totalCount
+          }
       edges {
         node {
           excerpt(pruneLength: 200, truncate: true)

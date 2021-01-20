@@ -6,6 +6,7 @@ import './index.scss'
 
 export const Top = ({ title, location, rootPath }) => {
   const isRoot = location.pathname === rootPath
+  const isTag = location.pathname === `/tags`
   return (
     <div className="top">
       {!isRoot && (
@@ -13,11 +14,11 @@ export const Top = ({ title, location, rootPath }) => {
           {title}
         </Link>
       )}
-      {
+      {!isTag && (
         <Link to={`/tags`} className="tag">
           Tag
         </Link>
-      }
+      )}
         
     </div>
   )

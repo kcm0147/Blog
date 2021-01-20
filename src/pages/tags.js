@@ -1,37 +1,33 @@
 import { Link,graphql } from 'gatsby'
 import _ from 'lodash'
-import React, { useMemo } from 'react'
+import React from 'react'
 import kebabCase from "lodash/kebabCase"
 import { Helmet } from "react-helmet"
-import { Bio } from '../components/bio'
-import { Category } from '../components/category'
-import { Contents } from '../components/contents'
-import { Head } from '../components/head'
-import { HOME_TITLE } from '../constants'
-import { useCategory } from '../hooks/useCategory'
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import { useRenderedCount } from '../hooks/useRenderedCount'
-import { useScrollEvent } from '../hooks/useScrollEvent'
 import { Layout } from '../layout'
+import { Top } from '../components/top'
 import * as Dom from '../utils/dom'
 import * as EventManager from '../utils/event-manager'
 
 const BASE_LINE = 80
-// 제일 처음 블로그에 접속했을때의 페이지 내용
+
 function getDistance(currentPos) {
   return Dom.getDocumentHeight() - currentPos
 }
 
-const TagsPage = ({
+const rootPath = `/`
+
+const TagsPage = ({location,
     data: {
       allMarkdownRemark: { group },
       site: {
         siteMetadata: { title },
       },
-    },
-  }) => (
+    }
+  }) => {
+
+    return (
     <div>
-      <Helmet title={title} />
+       <Top title={title} location={location} rootPath={rootPath} />
       <div>
         <h1>Tags</h1>
         <ul>
@@ -46,6 +42,7 @@ const TagsPage = ({
       </div>
     </div>
   )
+          }
 
 export default TagsPage
 
