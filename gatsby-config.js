@@ -67,14 +67,14 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: metaConfig.ga,
-    //     head: true,
-    //     anonymize: true,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: metaConfig.ga,
+        head: true,
+        anonymize: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
