@@ -7,6 +7,10 @@ description : "SpringJPA 영속성과 준영속성"
 tags : ['SpringJPA']
 ---
 
+**영속성 준영속성 비영속성의 차이점을 비교하고 정리하였습니다**
+
+<br/>
+
 ### EntinyManagerFactory, EntityManager
 
 ```
@@ -22,6 +26,7 @@ tags : ['SpringJPA']
 - 여러 스레드가 동시에 접근을 한다면 동시에 문제가 발생한다는 점에서 스레드 간 공유를 해서는 안됩니다
 ```
 
+<br/>
 
 ### 영속성과 준영속성?
 
@@ -37,6 +42,7 @@ Entity를 저장하고 관리합니다.
 
 비영속성 코드의 예를 보겠습니다.
 
+<br/>
 
 #### 비영속성
 
@@ -106,12 +112,70 @@ itemParam의 값이 변한다 한들, DB의 값이 자동으로 변하지 않습
 commit이후 Entity를 DB에 저장되는 과정을 flush 과정이라고 합니다.
 
 
-#### 준영속성 상태
+#### 준영속성과 영속성 비교
 
 영속상태와 준영속성상태의 명확한 차이점을 아는 것이 중요하다고 생각합니다.
 
+---
+
+##### 영속상태
+
+영속성 컨텍스트의 1차캐시에 올라간 상태가 영속 상태라고 합니다.
+
+EntityManager가 persist()로 인해 영속성 컨텍스트로 저장한 상태도 영속 상태이지만 em.find()로 조회를 할 때, **영속성 컨텍스트 1차 캐시에 없어서 DB에서 조회해 1차 캐시에저장한 상태도 영속 상태**입니다.
+
+```java
+
+User user = em.find(User.class,100L); // entity를 db에서 가져오기 때문에 영속성 컨텍스트
+
+user.setName("mook"); // 자동으로 Dirty Checking이 일어나서 update 쿼리를 날린다.
+
+transcation.commit();
+
+```
+
+Entity를 db에서 가져와서 영속성 엔티티가 되었는데, mook으로 이름을 바꾸게 되면 **Dirty Checking** 으로 인해 update 쿼리를 날리게 됩니다.
+
+그 후에 commit으로 인해 update된 내용을 영속성 컨텍스트에 저장하게 됩니다.
+
+<br/>
 
 
+##### 준영속 상태
+
+준영속 상태란 영속상태의 entity가 컨텍스트에서 분리된 상태를 일컫습니다.
+
+```java
+
+User user = em.find(User.class,100L);
+user.setName("mook");
+
+em.detach(user);
+
+transcation.commit();
+
+
+```
+
+<br/>
+
+위의 코드와는 달리 `detach`로 인해서 user 엔티티만 준영속상태로 전환을 시킵니다.
+
+또한 준영속 상태는 임의로 만들어낸 엔티티에 기존 식별자만 가지고 있으면 `준영속 엔티티`라고도 볼 수 있습니다.
+
+가령 아래와 같은 예를 의미합니다.
+
+```java
+
+public User createUser(Long userId){
+    User user = new User();
+    user.setName("mook");
+    user.setName(userId); //userID를 set하는 순간 준영속 엔티티라고 볼 수 있습니다.
+}   
+
+```
+
+준영속 엔티티는 영속성 상태와는 달리 데이터가 변경되도 자동으로 트랜잭션이 업데이트 쿼리를 보내지 않습니다.
 
 
 
@@ -120,7 +184,8 @@ commit이후 Entity를 DB에 저장되는 과정을 flush 과정이라고 합니
 ### 1차 캐시
 
 
-![1차캐시]()
+![1차캐시](https://user-images.githubusercontent.com/57346393/107151264-f885bf80-69a4-11eb-8447-6d3c886b1aaf.png)
+
 
 
 영속성 컨텍스트의 내부에는 1차 캐시가 존재합니다.
@@ -139,8 +204,8 @@ commit이후 Entity를 DB에 저장되는 과정을 flush 과정이라고 합니
 
 ```java
 
-User user = em.find(User.class,"mook");
-User user2 = em.find(User.class,"mook");
+User user = em.find(User.class,100L);
+User user2 = em.find(User.class,100L);
 
 System.out.println(user==user2) // true
 
@@ -151,14 +216,99 @@ System.out.println(user==user2) // true
 
 ### 트랙잭션의 쓰기지연
 
+트랜잭션 내부에서 `persist()`가 일어날 때, 엔티티들을 1차 캐시에 저장한 후, 
 
+논리적으로 쓰기 지연 SQL 저장소에 INSERT 쿼리들을 생성해 쌓아 놓습니다.
+
+SQL은 `commit()`을 하는 시점에서 DB에 저장소의 쿼리들을 보내게 됩니다.
+
+그런데 저장소의 쿼리를 보내는 것은 `commit()`이 아니라 `flush()`가 하게 됩니다.
+
+즉 commit을 하는 시점에서 flush()를 같이하게 되는 것이죠 !
+
+만약에 `flush()`를 직접 호출을 하게 되면 `commit()`을 하는 시점 이전에 SQL 쿼리를 데이터베이스에 저장하게 됩니다.
+
+flush는 `직접 호출` `commit() 이후 자동으로 호출` `JPQL 쿼리 실행시 자동 호출` 세가지 방식으로 실행이 됩니다.
+
+단, `flush()`를 호출한다 한들 1차캐시는 삭제 되지 않습니다 ! **엔티티들은 그대로 남아**있습니다.
+
+
+<br/>
+
+### 엔티티 삭제
+
+엔티티를 삭제하는 방법으로는 아래와 같습니다.
+
+```java
+
+User user = em.find(User.class,100L);
+
+em.remove(user); // 엔티티 삭제
+
+
+```
+
+
+<br/>
 
 
 ### 변경감지와 병합
 
+엔티티의 데이터 변경감지 및 병합방법을 소개하겠습니다.
+
+실무에서는 보통 데이터 변경감지 기능을 사용하여 데이터를 수정합니다.
+
+아래는 **변경감지** 입니다.
+
+```java
+
+@Transactional
+void update(Item itemParam) { //itemParam: 파리미터로 넘어온 준영속 상태의 엔티티
+    Item findItem = em.find(Item.class, itemParam.getId()); // 같은 엔티티를 조회 -> 영속성 엔티티
+    findItem.setPrice(itemParam.getPrice()); //데이터를 수정한다. 
+
+}
+
+```
+
+영속성 컨텍스트에서 엔티티를 다시 조회한 후에 데이터를 수정하는 방법으로, 트랙잭션의 커밋시점에서
+
+변경을 감지하여 데이터베이스에 Update SQL을 실행하여 값을 수정합니다.
 
 
-### 엔티티 삭제
+아래는 **병합** 입니다.
+
+
+```java
+
+@Transactional
+void update(Item itemParam) { //itemParam: 파리미터로 넘어온 준영속 상태의 엔티티
+
+        mergeItem = em.merge(item);
+}
+
+```
+
+
+```
+
+병합의 동작 방식은 아래와 같습니다.
+
+1. `merge()`를 실행합니다
+
+2. 파라미터로 넘어온 준영속 엔티티의 식별자 값으로 1차 캐시에서 엔티티를 조회합니다
+
+    이때 1차캐시에 엔티티가 없으면 데이터베이스에서 엔티티를 조회 후, 1차 캐시에 저장합니다.
+
+3. 조회한 영속 엔티티에 item엔티티의 값을 채워넣습니다.
+
+4. merge 후 반환된 mergeItem을 반환합니다. 이때의 mergeItem은 영속상태 엔티티입니다.
+
+```
+
+
+
+
 
 
 
