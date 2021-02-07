@@ -1,9 +1,9 @@
 ---
 title : '[GraphQL] REST API 문제점'
-date : 2021-01-31 16:22:12
+date : 2021-01-31 11:32:12
 category : 'GraphQL'
 draft : false
-description : "GraphQL 문제점"
+description : "REST API 문제점"
 tags : ['GraphQL']
 ---
 
@@ -62,7 +62,9 @@ Overfetching은 원하는 정보에 비하여 더 많은 정보를 받아오는 
 
 이렇게 localhost:3000/api/team 이라고 GET방식으로 요청을 하면 다음과 같이 team의 정보들을 받을 수 있습니다
 
-하지만 저희가 원하는 정보는 manager들과 office의 정보인데 team 전체의 정보를 받게되는 현상이 일어날 수 있습니다.
+하지만 저희가 원하는 정보는 manager들과 office의 정보인데 team 전체의 정보를 받게되는 현상이 일어나게 됩니다
+
+
 
 <br/>
 
