@@ -1,5 +1,5 @@
 ---
-title : '[SpringBoot] 기초 공부하기 (계속추가)'
+title : '[SpringBoot] 기초 공부하기'
 date : 2021-01-29 15:22:12
 category : 'SpringBoot'
 draft : false
