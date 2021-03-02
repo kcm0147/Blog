@@ -104,6 +104,7 @@ viewSolver 대신에 `HttpMessageConverter`가 작동합니다
 
 
 <br/><br/>
+
 ### < 일반적인 웹 애플리케이션 계층 구조 >
 
 1. 컨트롤러 : 웹 MVC의 컨트롤러 역할입니다
