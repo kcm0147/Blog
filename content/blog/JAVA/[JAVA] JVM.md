@@ -1,7 +1,7 @@
 ---
-title : '[Basics] JVM ?'
+title : '[JAVA] JVM ?'
 date : 2021-03-03 10:22:12
-category : 'Basics'
+category : 'JAVA'
 draft : false
 description : "JVM에 대하여"
 tags : ['Java']
