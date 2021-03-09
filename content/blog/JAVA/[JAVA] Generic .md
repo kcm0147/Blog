@@ -133,5 +133,8 @@ get()은 `return T;` 대신 `return String;`이 됩니다.
 
 <br/>
 
++ Generic 멀티 파라미터
++ 와일드카드
++ Generic 메소드
 
 
