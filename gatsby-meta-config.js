@@ -3,7 +3,7 @@ module.exports = {
   description: `Blog By Mook`,
   author: `Chang Mook Kim`,
   introduction: `취업을 준비하는 대학생`,
-  siteUrl: `https://chmook.netlify.com`, // Your blog site url
+  siteUrl: `https://chmook.netlify.app`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
     github: `kcm0147`, // Your GitHub account
