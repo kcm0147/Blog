@@ -96,8 +96,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://chmook.netlify.app',
-        sitemap: 'https://chmook.netlify.app/sitemap.xml',
+        host: 'https://chmook.site',
+        sitemap: 'https://chmook.site/sitemap.xml',
         policy: [{
           userAgent: '*',
           allow: '/'
