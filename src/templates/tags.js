@@ -20,7 +20,7 @@ const Tags = ({ pageContext, data, location }) => {
   
 
   const { tag } = pageContext;
-  const tagHeader = `${tag.totalCount} post${
+  const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
   
@@ -79,8 +79,8 @@ export const pageQuery = graphql`
     ) {
      group(field: frontmatter___tags) {
             fieldValue
-            totalCount
           }
+      totalCount
       edges {
         node {
           excerpt(pruneLength: 200, truncate: true)
