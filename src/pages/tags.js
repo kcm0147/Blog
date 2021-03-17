@@ -2,11 +2,11 @@ import { Link,graphql } from 'gatsby'
 import _ from 'lodash'
 import React from 'react'
 import kebabCase from "lodash/kebabCase"
-import { Helmet } from "react-helmet"
-import { Layout } from '../layout'
 import { Top } from '../components/top'
 import * as Dom from '../utils/dom'
 import * as EventManager from '../utils/event-manager'
+
+import "../styles/tag.scss"
 
 const BASE_LINE = 80
 
@@ -28,15 +28,15 @@ const TagsPage = ({location,
     return (
     <div>
        <Top title={title} location={location} rootPath={rootPath} />
-      <div>
-        <h1>Tags</h1>
+      <div class="tag">
+        <h1>Tag</h1>
         <ul>
           {group.map(tag => (
-            <li key={tag.fieldValue}>
+            <div key={tag.fieldValue}>
               <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
+              <button># {tag.fieldValue} ( {tag.totalCount} )</button>
               </Link>
-            </li>
+            </div>
           ))}
         </ul>
       </div>

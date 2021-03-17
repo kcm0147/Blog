@@ -1,0 +1,60 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Indie+Flower&display=swap');
+
+
+
+
+.tag{
+
+    h1{
+        margin-left:30px;
+    }
+
+    
+    div{
+        display:inline-block;
+    }
+
+    button{
+        background:#1AAB8A;
+        color:#fff;
+        border:none;
+        position:relative;
+        
+        width:auto;
+        margin-right:1rem;
+        margin-bottom:1rem;
+        height:50px;
+        font-size:1rem;
+        padding:0.5rem 1rem;
+        cursor:pointer;
+        transition:800ms ease all;
+        
+        outline:none;
+      }
+      button:hover{
+        background:#fff;
+        color:#1AAB8A;
+      }
+      button:before,button:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #1AAB8A;
+        transition:400ms ease all;
+      }
+      button:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+      }
+      button:hover:before,button:hover:after{
+        width:100%;
+        transition:800ms ease all;
+      }
+
+}
