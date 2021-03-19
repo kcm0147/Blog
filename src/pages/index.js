@@ -14,6 +14,7 @@ import { Layout } from '../layout'
 import * as Dom from '../utils/dom'
 import * as EventManager from '../utils/event-manager'
 
+import Search from "../components/search/search"
 
 const BASE_LINE = 80
 // 제일 처음 블로그에 접속했을때의 페이지 내용
@@ -49,12 +50,15 @@ export default ({ data, location }) => {
     <Layout location={location} title={siteMetadata.title}>
       <Head title={HOME_TITLE} keywords={siteMetadata.keywords} />
       <Bio />
+      
+
       <Category
         categories={categories}
         category={category}
         selectCategory={selectCategory}
       />
       
+    
       <Contents
         posts={posts}
         countOfInitialPost={countOfInitialPost}

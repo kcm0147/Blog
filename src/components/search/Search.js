@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
 
 
+import './search.scss'
 
 const Search = (props) => {
   const emptyQuery = "";
@@ -44,11 +45,12 @@ const Search = (props) => {
         const { slug } = node.fields;
         const { title, date, description } = node.frontmatter;
         return (
+          <Link to={slug}>
           <div key={slug} className="search-article">
             <article key={slug}>
               <header>
                 <h2 className="search-title">
-                  <Link to={slug}>{title}</Link>
+                {title}
                 </h2>
               </header>
               <section>
@@ -64,6 +66,7 @@ const Search = (props) => {
               </section>
             </article>
           </div>
+          </Link>
         );
       })
     );
@@ -71,18 +74,24 @@ const Search = (props) => {
 
   return (
     <div className="search">
+      <input type="checkbox" id="trigger" class="search__checkbox" />
+  <label class="search__label-init" for="trigger"></label>
+  <label class="search__label-active" for="trigger"></label>
+  <div class="search__border"></div>
           <input
-            className="form-control form-control-sm ml-3 w-75"
             type="text"
+            class="search__input"
             placeholder="Search"
             aria-label="Search"
             onChange={handleInputChange}
           />
+          
       {state.query && (
         <div className="search_result">
           {renderSearchResults()}
         </div>
       )}
+  <div class="search__close"></div>
     </div>
   );
 };

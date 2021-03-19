@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GitHubIcon } from '../social-share/github-icon'
+import Search from "../search/search"
 
 import './index.scss'
 
@@ -14,6 +15,9 @@ export const Top = ({ title, location, rootPath }) => {
           {title}
         </Link>
       )}
+
+      <Search/>
+      
       {!isTag && (
         <Link to={`/tags`} className="tag">
           Tag
