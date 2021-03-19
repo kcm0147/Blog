@@ -14,6 +14,7 @@ import { Layout } from '../layout'
 import * as Dom from '../utils/dom'
 import * as EventManager from '../utils/event-manager'
 
+
 const BASE_LINE = 80
 // 제일 처음 블로그에 접속했을때의 페이지 내용
 function getDistance(currentPos) {
@@ -53,6 +54,7 @@ export default ({ data, location }) => {
         category={category}
         selectCategory={selectCategory}
       />
+      
       <Contents
         posts={posts}
         countOfInitialPost={countOfInitialPost}
