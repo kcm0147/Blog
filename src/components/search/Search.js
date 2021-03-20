@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
 
 
-import './search.scss'
+import './Search.scss'
 
 const Search = (props) => {
   const emptyQuery = "";

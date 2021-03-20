@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GitHubIcon } from '../social-share/github-icon'
-import Search from '../search/search.js'
+import Search from '../search/Search'
 
 import './index.scss'
 
