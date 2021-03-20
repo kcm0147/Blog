@@ -5,7 +5,7 @@ import { Header } from '../components/header'
 import { ThemeSwitch } from '../components/theme-switch'
 import { Footer } from '../components/footer'
 import { rhythm } from '../utils/typography'
-import Search from "../components/search/search"
+
 
 import './index.scss'
 
