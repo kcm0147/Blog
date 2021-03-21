@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
 
-
 import './SearchStyle.scss'
+import CheckboxPrompt from "inquirer/lib/prompts/checkbox";
+
 
 const Search = (props) => {
   const emptyQuery = "";
@@ -32,6 +33,9 @@ const Search = (props) => {
       filteredData,
     });
   };
+
+  
+  
 
   const renderSearchResults = () => {
     const { query, filteredData } = state;
@@ -74,7 +78,7 @@ const Search = (props) => {
 
   return (
     <div className="search">
-      <input type="checkbox" id="trigger" class="search__checkbox" />
+      <input type="checkbox" id="trigger" class="search__checkbox"/>
   <label class="search__label-init" for="trigger"></label>
   <label class="search__label-active" for="trigger"></label>
   <div class="search__border"></div>
