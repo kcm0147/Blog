@@ -4,7 +4,7 @@ date : 2021-01-14 21:12:04
 category : 'Algorithms'
 draft : false
 description : "LIS(최장부분수열)에 관하여"
-tags : ['DP','LIS','Binary Search']
+tags : ['DP','LIS','이분탐색']
 ---
 
 ## 연관 문제 : 백준 12015 가장 긴 부분수열 길이 구하기
@@ -24,7 +24,7 @@ LIS를 구하는 방법은 두가지가 존재하는데,
 
 1) DP(Dynamic Programming)을 이용해서 구하는 방법
 
-2) 이진탐색을 이용해서 구하는 방법
+2) 이분탐색을 이용해서 구하는 방법
 
 이렇게 두가지가 존재한다. 2번의 경우를 사용했을때 좀 더 빠르게 LIS를 구할 수 있다.
 
@@ -58,7 +58,7 @@ i의 이전 값(j)가 i보다 작다면 수열의 조건에 해당하고, 이때
 ---
 ---
 
-### 2번 - Binary Search를 이용하여 Lower Bound를 찾아 LIS를 구하는 방법
+### 2번 - 이분탐색를 이용하여 Lower Bound를 찾아 LIS를 구하는 방법
 
 2번의 경우 로직은 간단하다.
 
