@@ -1,9 +1,9 @@
 ---
-title : '[Effective Java] 아이템3 Private 생성자나 열거타입으로 싱글톤임을 보증하라'
+title : '[Effective Java] 아이템2 생성자에 매개변수가 많다면 빌더를 고려하라'
 date : 2021-04-20 10:22:12
 category : 'Effective Java'
 draft : false
-description : "아이템3 Private 생성자나 열거타입으로 싱글톤임을 보증하라"
+description : "아이템2 생성자에 매개변수가 많다면 빌더를 고려하라"
 tags : ['Java']
 ---
 
@@ -18,6 +18,7 @@ tags : ['Java']
 생성자와 정적 팩터리 메서드를 사용할 때 **선택적 매개변수가 많을 때 사용하기가 힘들다**는 단점이 존재합니다.
 
 <br/>
+
 - - - -
 
 ## 점층적 생성자 패턴
@@ -231,6 +232,7 @@ public class NutritionFacts {
 ```
 
 <br/>
+
 - - - -
 
 ### 자바빈즈와 빌더 패턴의 차이점 ??
@@ -244,6 +246,7 @@ public class NutritionFacts {
 반면, 빌더 패턴의 경우 객체 생성 전에 값을 Setter를 통해 설정하기 때문에 도중에 Setter 메서드를 통해서 값이 변경될 우려가 없어 불변성을 보장할 수 있습니다.
 
 <br/>
+
 - - - -
 
 ### 빌더 패턴의 단점 ?
