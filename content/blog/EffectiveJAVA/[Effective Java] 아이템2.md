@@ -1,9 +1,9 @@
 ---
-title : '[Effective Java] 아이템2 생성자에 매개변수가 많다면 빌더를 고려하라'
+title : '[Effective Java] 아이템2 생성자에 매개변수가 많다면 빌더를 고려해라'
 date : 2021-04-20 10:22:12
 category : 'Effective Java'
 draft : false
-description : "아이템2 생성자에 매개변수가 많다면 빌더를 고려하라"
+description : "아이템2 생성자에 매개변수가 많다면 빌더를 고려해라"
 tags : ['Java']
 ---
 
