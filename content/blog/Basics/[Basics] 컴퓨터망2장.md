@@ -51,7 +51,7 @@ Transport lyaer는 application layer이 어떤서비스를 원하는지에 따�
 
 ### TCP service와 UDP service의 차이점
 
-[image:6E2B092F-9532-41B4-857E-20836CDBA99E-372-0000267D8BFB508E/스크린샷 2021-04-30 오후 7.25.50.png]
+![image:6E2B092F-9532-41B4-857E-20836CDBA99E-372-0000267D8BFB508E/스크린샷 2021-04-30 오후 7.25.50.png]
 
 TCP는
 
