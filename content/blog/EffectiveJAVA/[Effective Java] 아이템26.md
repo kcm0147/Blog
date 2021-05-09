@@ -7,7 +7,8 @@ description : "아이템26 raw 타입을 사용하지마라"
 tags : ['Java']
 ---
 
-# 이펙티브 자바 아이템 26
+
+## 이펙티브 자바 아이템 26
 
 <br/>
 
@@ -33,7 +34,7 @@ public static void main(String[] args) {
     String s = strings.get(0);
 }
 
-// 로 타입
+*// 로 타입
 private static void unsafeAdd(List list, Object o) {
     list.add(o);
 }
@@ -68,24 +69,32 @@ private static void unsafeAdd(List<Object> list, Object o) {
 
 애초에 이 코드는 컴파일 오류가 발생하여 실행 조차 되지 않습니다. 
 
-즉, 제네릭 타입을 사용함으로서 실행 시점이 아닌 컴파일 시점에 오류를 확인할 수 있어 보다 안전합니다.
+즉, 제네릭 타입을 사용함으로써 실행 시점이 아닌 컴파일 시점에 오류를 확인할 수 있어 보다 안전합니다.
 
 <br/>
 
 
-
 ### 와일드카드
 
-제네릭타입을 사용하고는 싶지만, 실제 자료형이 무엇인지 모를 때는 와일드카드를 사용할 수 있습니다.
+제네릭 타입을 사용하고는 싶지만, 실제 자료형이 무엇인지 모를 때는 `비 한정적` 와일드카드를 사용할 수 있습니다.
 
 와일드카드는 `Set<?>`으로 ? 를 넣어서 사용할 수 있습니다.
 
 와일드카드 타입은 안전하고, 로 타입은 안전하지 않습니다.
 
-로타입의 컬렉션에는 아무 원소나 넣을 수 있으나 타입 불변식을 훼손하기가 쉬우며
+로 타입의 컬렉션에는 아무 원소나 넣을 수 있으나 타입 불변식을 훼손하기가 쉬우나
 
-반면에  와일드카드를 사용한 컬렌션인 Collection<?>에는 (null 외에는) 어떤 원소도 넣을 수 없습니다.
+반면에  와일드카드를 사용한 컬렉션인 Collection<?>에는 (null 외에는) 어떤 원소도 넣을 수 없습니다.
 
+만약 위와 같은 제약을 받아 들일 수 없다면 위에서 배운 `제네릭 타입`  `한정적 와일드 카드 타입`을 사용하면 됩니다.
+
+Ex)
+
+**<?>** : Unbounded Wildcards 로서, **모든 클래스나 인터페이스의 타입이 올수 있습니다**.
+
+**<? extends T >** : 와일드카드의 Upper Bound - **T와 그 자손들을 구현한 객체들의 타입**만 올 수 있습니다. ( 한정적 )
+
+**<? super T >** : 와일드 카드의 Lower Bound - **T와 그 조상들을 구현한 객체들의 타입**만 올 수 있습니다.  ( 한정적 )
 
 <br/>
 
@@ -101,18 +110,19 @@ private static void unsafeAdd(List<Object> list, Object o) {
 <br/>
 
 
-예를 들어 , List.class , String[].class , int.class는 허용하고 List<String>.class, List<?>.class는 허용을 하지 않습니다.
+예를 들어, List.class, String[].class, int.class는 허용하고 List<String>.class, List<?>.class는 허용을 하지 않습니다.
 
 또한 `instanceof` 연산자와도 관련이 있습니다.
 
- `런타임`에는 제네릭 타입 정보가 지워지므로 `instanceof` 연산자는 비한정적 와일드 카드 타입외에 매개변수화 타입에는 적용할 수 없습니다. 
+ `런타임`에는 제네릭 타입 정보가 지워지므로 `instanceof` 연산자는 비한정적 와일드 카드 타입외에 매개 변수화 타입에는 적용할 수 없습니다. 
 
 로 타입이든 와일드 카드 타입이든 `instanceof`는 똑같이 동작을 합니다.
 
 ```java
 
-if( o instanceof Set) { // 이렇게 로타입으로 instance of를 사용합니다
+if( o instanceof Set) { *// 이렇게 로타입으로 instance of를 사용합니다*
     Set<?> s = (Set<?>) o;
 }
 
 ```
+
